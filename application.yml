@@ -5,7 +5,7 @@ spring:
     password: testtest
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
 
 someParameter:
   value: 5463
