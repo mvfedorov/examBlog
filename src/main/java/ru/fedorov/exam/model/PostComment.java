@@ -16,14 +16,14 @@ public class PostComment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_id_id")
-    private PostComment parentId;
+    @JoinColumn(name = "parent_id")
+    private PostComment parent;
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post post;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "post_id_id", nullable = false)
-    private Post postId;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id_id", nullable = false)
-    private User userId;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
     @Column(nullable = false)
     private Date time;
     @Column(nullable = false, columnDefinition = "TEXT")
