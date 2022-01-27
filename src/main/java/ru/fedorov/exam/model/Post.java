@@ -21,14 +21,17 @@ public class Post {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ModerationStatus moderationStatus;
-    private int moderatorId;
-    @Column(nullable = false)
-    private int userId;
+    @ManyToOne
+    @JoinColumn(name = "moderator_id")
+    private User moderator;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
     @Column(nullable = false)
     private Date time;
     @Column(nullable = false)
     private String title;
-    @Column(nullable = false)
+    @Column(nullable = false,columnDefinition = "TEXT")
     private String text;
     @Column(nullable = false)
     private int viewCount;
