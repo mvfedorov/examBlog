@@ -5,7 +5,10 @@ spring:
     password: testtest
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.mysql.sql
 
 blog:
   title: "Blog example"
