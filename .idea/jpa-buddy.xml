@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JpaBuddyIdeaProjectConfig">
+    <option name="liquibaseDirectory" value="db/changelog/2022/03" />
     <option name="defaultUnitInitialized" value="true" />
+    <option name="updateChangeLogPath" value="src/main/resources/db/changelog/db.changelog-master.yaml" />
+    <option name="updateDbConnectionName" value="ac05420c-55cb-4f61-9062-f9fc2e128228" />
   </component>
 </project>

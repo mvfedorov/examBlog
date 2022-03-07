@@ -43,6 +43,7 @@ public class ApiGeneralController {
         return new ResponseEntity<>(AuthCheckService.authCheck(),HttpStatus.OK);
     }
 
+    // TODO: 27.01.2022 add parameters offset, limit, mode 
     @GetMapping("/post")
     private ResponseEntity<PostResponse> post() {
         return new ResponseEntity<>(PostService.getPosts(),HttpStatus.OK);
