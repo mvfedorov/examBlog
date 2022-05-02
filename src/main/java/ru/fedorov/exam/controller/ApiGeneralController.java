@@ -2,14 +2,13 @@ package ru.fedorov.exam.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.fedorov.exam.api.response.*;
 import ru.fedorov.exam.service.AuthCheckService;
 import ru.fedorov.exam.service.PostService;
 import ru.fedorov.exam.service.SettingsService;
 import ru.fedorov.exam.service.TagService;
+import ru.fedorov.exam.service.impl.TagServiceImpl;
 
 @RestController
 @RequestMapping("/api")
@@ -35,23 +34,16 @@ public class ApiGeneralController {
 
     @GetMapping("/settings")
     private ResponseEntity<SettingsResponse> settings() {
-        return new ResponseEntity<>(SettingsService.getGlobalSettings(),HttpStatus.OK);
-    }
-
-    @GetMapping("/auth/check")
-    private ResponseEntity<AuthCheckResponse> authCheck() {
-        return new ResponseEntity<>(AuthCheckService.authCheck(),HttpStatus.OK);
-    }
-
-    // TODO: 27.01.2022 add parameters offset, limit, mode 
-    @GetMapping("/post")
-    private ResponseEntity<PostResponse> post() {
-        return new ResponseEntity<>(PostService.getPosts(),HttpStatus.OK);
+        return new ResponseEntity<>(settingsService.getGlobalSettings(),HttpStatus.OK);
     }
 
     @GetMapping("/tag")
-    private ResponseEntity<TagResponse> tags() {
-        return new ResponseEntity<>(TagService.getTags(),HttpStatus.OK);
+    private ResponseEntity<TagResponse> tags(@RequestParam(value = "query", required = false) String query) {
+        return new ResponseEntity<>(tagService.getTags(query),HttpStatus.OK);
     }
 
+    @GetMapping("/calendar")
+    private ResponseEntity<CalendarResponse> getPostsInYear(@RequestParam(value = "year", required = false) Integer year) {
+        return new ResponseEntity<>(postService.postsCalendar(year),HttpStatus.OK);
+    }
 }

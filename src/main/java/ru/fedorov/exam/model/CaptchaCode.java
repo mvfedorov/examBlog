@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -15,9 +16,9 @@ public class CaptchaCode {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(nullable = false)
-    private Date time;
+    private LocalDateTime time;
     @Column(nullable = false, columnDefinition = "TINYTEXT")
-    private int code;
+    private String code;
     @Column(nullable = false, columnDefinition = "TINYTEXT")
-    private int secretCode;
+    private String secretCode;
 }

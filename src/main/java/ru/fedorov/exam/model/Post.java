@@ -1,12 +1,14 @@
 package ru.fedorov.exam.model;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import ru.fedorov.exam.enums.ModerationStatus;
+import org.springframework.data.jpa.repository.Query;
+import ru.fedorov.exam.model.enums.ModerationStatus;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "posts")
@@ -35,4 +37,20 @@ public class Post {
     private String text;
     @Column(nullable = false)
     private int viewCount;
+    @OneToMany(mappedBy = "post")
+    Set<PostComment> postComments;
+    @OneToMany(mappedBy = "post_id")
+    Set<PostVote> postVotes;
+
+    public int getLikeCount() {
+        return (int) postVotes.stream().filter(pv -> pv.getValue() == 1).count();
+    }
+
+    public int getDislikeCount() {
+        return (int) postVotes.stream().filter(pv -> pv.getValue() == -1).count();
+    }
+
+    public int getCommentCount() {
+        return postComments.size();
+    }
 }

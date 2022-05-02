@@ -141,5 +141,6 @@
     <orderEntry type="library" name="Maven: org.apache.maven:maven-artifact:3.3.9" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-compat:3.3.9" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.wagon:wagon-provider-api:2.10" level="project" />
+    <orderEntry type="library" name="Maven: com.github.cage:cage:1.0" level="project" />
   </component>
 </module>

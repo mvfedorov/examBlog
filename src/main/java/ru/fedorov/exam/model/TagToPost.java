@@ -18,7 +18,7 @@ public class TagToPost {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id_id", nullable = false)
     private Post post_id;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "tag_id_id", nullable = false)
     private Tag tag_id;
 }
