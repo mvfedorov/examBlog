@@ -1,13 +1,12 @@
 package ru.fedorov.exam.service;
 
-import org.springframework.stereotype.Service;
+import ru.fedorov.exam.api.post.AuthRegisterPost;
 import ru.fedorov.exam.api.response.AuthCheckResponse;
+import ru.fedorov.exam.api.response.CaptchaResponse;
+import ru.fedorov.exam.api.response.RegisterResponse;
 
-@Service
-public class AuthCheckService {
-    public static AuthCheckResponse authCheck() {
-        AuthCheckResponse authCheckResponse = new AuthCheckResponse();
-        authCheckResponse.setResult(true);
-        return authCheckResponse;
-    }
+public interface AuthCheckService {
+    public AuthCheckResponse authCheck();
+    public CaptchaResponse authCaptcha();
+    public RegisterResponse register(AuthRegisterPost authRegisterPost);
 }

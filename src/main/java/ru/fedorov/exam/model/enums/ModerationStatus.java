@@ -1,4 +1,4 @@
-package ru.fedorov.exam.enums;
+package ru.fedorov.exam.model.enums;
 
 public enum ModerationStatus {
     NEW,

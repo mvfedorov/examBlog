@@ -7,7 +7,7 @@ import ru.fedorov.exam.api.response.InitResponse;
 
 @Controller
 public class DefaultController {
-    private InitResponse initResponse;
+    private final InitResponse initResponse;
 
     public DefaultController(InitResponse initResponse) {
         this.initResponse = initResponse;
@@ -16,7 +16,7 @@ public class DefaultController {
     @RequestMapping("/")
     public String index(Model model)
     {
-        System.out.println(initResponse.getTitle());
+        //System.out.println(initResponse.getTitle());
         return "index";
     }
 
